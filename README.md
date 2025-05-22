@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تحية مميزة من أحمد</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap');
+        
+        :root {
+            --primary-color: #d21034;
+            --secondary-color: #007229;
+            --accent-color: #ffd700;
+        }
+        
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            color: white;
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        .particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 0;
+        }
+        
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        .header {
+            margin-bottom: 2rem;
+            position: relative;
+        }
+        
+        h1 {
+            font-size: 3.5rem;
+            margin: 0;
+            background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            color: #aaa;
+            margin-top: 0.5rem;
+        }
+        
+        .input-box {
+            position: relative;
+            margin: 2rem auto;
+            width: 100%;
+            max-width: 400px;
+        }
+        
+        input {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 50px;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            color: white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+        }
+        
+        input:focus {
+            outline: none;
+            box-shadow: 0 5px 20px rgba(210, 16, 52, 0.5);
+            background: rgba(255,255,255,0.15);
+        }
+        
+        input::placeholder {
+            color: #ccc;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: white;
+            background: linear-gradient(45deg, var(--primary-color), #e91e63);
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(210, 16, 52, 0.4);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(210, 16, 52, 0.6);
+        }
+        
+        .btn:active {
+            transform: translateY(1px);
+        }
+        
+        .btn::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
+        }
+        
+        .btn:hover::after {
+            transform: translateX(100%);
+        }
+        
+        .result {
+            margin: 2rem auto;
+            padding: 1.5rem;
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            max-width: 600px;
+            border: 1px solid rgba(255,255,255,0.1);
+            transform-style: preserve-3d;
+            perspective: 1000px;
+        }
+        
+        .result-text {
+            font-size: 2rem;
+            margin: 0;
+            color: var(--accent-color);
+            text-shadow: 0 2px 5px rgba(0,0,0,0.5);
+        }
+        
+        .footer {
+            margin-top: 3rem;
+            color: #777;
+            font-size: 0.9rem;
+        }
+        
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 5px rgba(210, 16, 52, 0.5);
+            }
+            to {
+                text-shadow: 0 0 20px rgba(210, 16, 52, 0.8), 0 0 30px rgba(255, 215, 0, 0.6);
+            }
+        }
+        
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: var(--accent-color);
+            opacity: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="particles-js" class="particles-js"></div>
+    
+    <div class="container">
+        <div class="header">
+            <h1 class="animate__animated animate__fadeInDown">أحمد بسلم عليك</h1>
+            <p class="subtitle animate__animated animate__fadeIn animate__delay-1s">أدخل اسمك لتستقبل تحية خاصة</p>
+        </div>
+        
+        <div class="input-box animate__animated animate__fadeInUp animate__delay-1s">
+            <input type="text" id="nameInput" placeholder="اكتب اسمك هنا...">
+        </div>
+        
+        <button class="btn animate__animated animate__pulse animate__delay-2s" onclick="showResult()">إضغط هنا</button>
+        
+        <div id="result" class="result" style="display: none;">
+            <p id="resultText" class="result-text"></p>
+        </div>
+        
+        <div class="footer animate__animated animate__fadeIn animate__delay-3s">
+            تحياتي القلبية من أحمد - كل الحقوق محفوظة © 2023
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        // تهيئة جسيمات الخلفية
+        document.addEventListener('DOMContentLoaded', function() {
+            particlesJS('particles-js', {
+                particles: {
+                    number: { value: 80, density: { enable: true, value_area: 800 } },
+                    color: { value: "#ffffff" },
+                    shape: { type: "circle" },
+                    opacity: { value: 0.5, random: true },
+                    size: { value: 3, random: true },
+                    line_linked: { enable: true, distance: 150, color: "#d21034", opacity: 0.4, width: 1 },
+                    move: { enable: true, speed: 3, direction: "none", random: true, straight: false, out_mode: "out" }
+                },
+                interactivity: {
+                    detect_on: "canvas",
+                    events: {
+                        onhover: { enable: true, mode: "repulse" },
+                        onclick: { enable: true, mode: "push" }
+                    }
+                }
+            });
+        });
+
+        function showResult() {
+            const name = document.getElementById('nameInput').value.trim();
+            const result = document.getElementById('result');
+            const resultText = document.getElementById('resultText');
+            
+            if (name) {
+                resultText.innerHTML = `الأمور شنو يا <span style="color:#ffeb3b">${name}</span>؟ <br> نورت الصفحة!`;
+                result.style.display = "block";
+                result.classList.add("animate__animated", "animate__zoomIn");
+                
+                // إضافة تأثير الكونفيتي
+                createConfetti();
+            } else {
+                resultText.innerHTML = 'أكتب اسمك الأول يا زول';
+                result.style.display = "block";
+                result.classList.add("animate__animated", "animate__shakeX");
+            }
+        }
+        
+        function createConfetti() {
+            const colors = ['#d21034', '#007229', '#ffd700', '#ffffff'];
+            
+            for (let i = 0; i < 100; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.top = -10 + 'px';
+                confetti.style.opacity = Math.random();
+                confetti.style.width = Math.random() * 10 + 5 + 'px';
+                confetti.style.height = Math.random() * 10 + 5 + 'px';
+                confetti.style.transform = 'rotate(' + Math.random() * 360 + 'deg)';
+                
+                document.body.appendChild(confetti);
+                
+                const animationDuration = Math.random() * 3 + 2;
+                
+                confetti.animate([
+                    { top: -10 + 'px', opacity: 1 },
+                    { top: 100 + 'vh', opacity: 0 }
+                ], {
+                    duration: animationDuration * 1000,
+                    easing: 'cubic-bezier(0.1, 0.8, 0.9, 1)',
+                    fill: 'forwards'
+                });
+                
+                setTimeout(() => {
+                    confetti.remove();
+                }, animationDuration * 1000);
+            }
+        }
+    </script>
+</body>
+</html>
